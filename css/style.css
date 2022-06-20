@@ -163,6 +163,11 @@ article {
     margin-top: 10px;
 }
 
+#buttonmenu:hover {
+    transform: scale(1.1);
+    transition: all 0.2s;
+}
+
 #buttonmenu {
     cursor: pointer;
     background-color: #000;
