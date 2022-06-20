@@ -11,29 +11,48 @@
     <script src="./script.js"></script>
     <script src="./cookie.js"></script>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+
+    <link rel="icon" href="./images/relIcon- site.png">
 </head>
 
 <body onload="OnBodyLoad()">
-    
-    
-    <div class="logo">
-        <img src="./images/logo.png" alt="Logo do site" id="img_logo">
-        <h1>Peixaria</h1>
-        <nav>
-            <ul class="navbar">
-                <li class="buttons_head"><a href="./index.html">Produtos</a></li>
-                <li class="buttons_head"><a href="./contato.html">Entre em contato</a></li>
-            </ul>
-        </nav>
-    </div>
     <header>
-        <div style="display: flex; align-items: center; margin-left: 1%; margin-top: 1%;">
-            <h3>Pesquise no google:</h3>
-            <div class="gcse-search"></div>
-            <script async src="https://cse.google.com/cse.js?cx=98b275f6b7164dee8"></script>
+        <div class="menu">
+            <div class="background_button">
+                <button id="buttonmenu" onclick="ShowMenu()">
+                    <i class="fa-solid fa-bars fa-2x"></i>
+                </button>
+                <div class="background_menu hidden">
+                    <div class="background_textlink">
+                        <i class="iconlink fa fa-product-hunt"></i>
+                        <a href="./index.html" class="textlink">Produtos</a>
+                    </div>
+                    <div class="background_textlink">
+                        <i class="iconlink fa fa-wpforms"></i>
+                        <a href="./contato.html" class="textlink">Contato</a>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h1 id="title">Compre o seu peixe</h1>
+            </div>
+            <div class="background_google">
+                <script async src="https://cse.google.com/cse.js?cx=98b275f6b7164dee8"></script>
+                <div class="gcse-search"></div>
+            </div>
         </div>
+    </header>
+    <article>
         <div class="estoque">
-            <h2>Confira nossos produtos</h2>
+            <!-- <h2>Confira nossos produtos</h2> -->
             <div class="products">
                 <div class="card">
                     <img src="./images/peixes/bagre.jpg" alt="BAGRE">
@@ -93,74 +112,89 @@
                     <p class="description">Delicioso siri para fazer com molho</p>
                     <p><button class="btn_buy">Comprar</button></p>
                 </div>
-
+    
             </div>
         </div>
-
+    
         <div class="w3-container">
             <div id="id01" class="w3-modal">
                 <div class="w3-modal-content w3-animate-opacity">
-                    <header class="w3-container w3-teal">
-                        <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+                    <header class="w3-container w3-black">
+                        <span onclick="document.getElementById('id01').style.display='none'"
+                            class="w3-button w3-display-topright">&times;</span>
                         <h2 style="text-align: center;">Efetuando compra</h2>
                     </header>
-                    <div class="w3-container">
+                    <div>
                         <div class="infopeixe">
                             <span id="peixenome">Nome do peixe</span>
                             <img src="./images/peixes/cacao.jpg" alt="Imagem do peixe" id="peixe_buy">
                         </div>
                         <div>
-                            <form onsubmit="submitForm(); return false;" action="javascript:void(0);">
+                            <form id="form_buy" onsubmit="submitForm(); return false;" action="javascript:void(0);">
                                 <div class="group_input">
                                     <label for="nome">Nome</label>
-                                    <input onblur="finishEdit(this)" id="nome" type="text" name="nome" placeholder="Insira seu nome" required/>
+                                    <input onblur="finishEdit(this)" id="nome" type="text" name="nome"
+                                        placeholder="Insira seu nome" required />
                                     <font style="text-align: right; color: #FF0000; display: none;">Nome inválido</font>
                                 </div>
                                 <div class="group_input">
                                     <label for="email">Email</label>
-                                    <input onblur="finishEdit(this)" id="email" type="email" name="email" placeholder="email@dominio.com" required/>
-                                    <font style="text-align: right; color: #FF0000; display: none;">Email inválido</font>
+                                    <input onblur="finishEdit(this)" id="email" type="email" name="email"
+                                        placeholder="email@dominio.com" required />
+                                    <font style="text-align: right; color: #FF0000; display: none;">Email inválido
+                                    </font>
                                 </div>
                                 <div class="group_input">
                                     <label for="cpf">CPF</label>
-                                    <input onblur="finishEdit(this)" id="cpf" type="text" name="cpf" placeholder="000.000.000-00" required/>
+                                    <input onblur="finishEdit(this)" id="cpf" type="text" name="cpf"
+                                        placeholder="000.000.000-00" required />
                                     <font style="text-align: right; color: #FF0000; display: none;">CPF inválido</font>
                                 </div>
                                 <div class="group_input">
                                     <label for="telefone">Telefone</label>
-                                    <input onblur="finishEdit(this)" id="telefone" type="number" name="telefone" placeholder="(99) 99999-9999" required/>
-                                    <font style="text-align: right; color: #FF0000; display: none;">Telefone inválido</font>
+                                    <input onblur="finishEdit(this)" id="telefone" type="number" name="telefone"
+                                        placeholder="(99) 99999-9999" required />
+                                    <font style="text-align: right; color: #FF0000; display: none;">Telefone inválido
+                                    </font>
                                 </div>
                                 <div class="group_input">
                                     <label for="cep">CEP</label>
-                                    <input onblur="finishEdit(this)" id="cep" type="text" name="cep" placeholder="00000-000" required/>
+                                    <input onblur="finishEdit(this)" id="cep" type="text" name="cep"
+                                        placeholder="00000-000" required />
                                     <font style="text-align: right; color: #FF0000; display: none;">CEP inválido!</font>
                                 </div>
                                 <div class="group_input">
                                     <label for="cidade">Cidade</label>
-                                    <input onblur="finishEdit(this)" id="cidade" type="text" name="cidade" required/>
-                                    <font style="text-align: right; color: #FF0000; display: none;">Valor inválido!</font>
+                                    <input onblur="finishEdit(this)" id="cidade" type="text" name="cidade" required />
+                                    <font style="text-align: right; color: #FF0000; display: none;">Valor inválido!
+                                    </font>
                                 </div>
                                 <div class="group_input">
                                     <label for="logadouro">Logadouro</label>
-                                    <input onblur="finishEdit(this)" id="logadouro" type="text" name="logadouro" required/>
-                                    <font style="text-align: right; color: #FF0000; display: none;">Valor inválido!</font>
+                                    <input onblur="finishEdit(this)" id="logadouro" type="text" name="logadouro"
+                                        required />
+                                    <font style="text-align: right; color: #FF0000; display: none;">Valor inválido!
+                                    </font>
                                 </div>
                                 <div class="group_input">
                                     <label for="bairro">Bairro</label>
-                                    <input onblur="finishEdit(this)" id="bairro" type="text" name="bairro" required/>
-                                    <font style="text-align: right; color: #FF0000; display: none;">Valor inválido!</font>
+                                    <input onblur="finishEdit(this)" id="bairro" type="text" name="bairro" required />
+                                    <font style="text-align: right; color: #FF0000; display: none;">Valor inválido!
+                                    </font>
                                 </div>
                                 <div class="group_input">
                                     <label for="UF">Estado</label>
-                                    <input onblur="finishEdit(this)" id="UF" type="text" name="UF" required/>
-                                    <font style="text-align: right; color: #FF0000; display: none;">Valor inválido!</font>
+                                    <input onblur="finishEdit(this)" id="UF" type="text" name="UF" required />
+                                    <font style="text-align: right; color: #FF0000; display: none;">Valor inválido!
+                                    </font>
                                 </div>
                                 <div class="group_input">
                                     <button id="submit" name="submit" type="submit">Comprar</button>
                                 </div>
                                 <div id="compra_sucesso">
-                                    <font id="compra_efetuada" style="text-align: center; color: #33AA33; font-family: 'Poppins', sans-serif; margin-top: 10px;">Compra efetuada com sucesso!</font>
+                                    <font id="compra_efetuada"
+                                        style="text-align: center; color: #33AA33; font-family: 'Poppins', sans-serif; margin-top: 10px;">
+                                        Compra efetuada com sucesso!</font>
                                 </div>
                             </form>
                         </div>
@@ -168,8 +202,8 @@
                 </div>
             </div>
         </div>
-        
-    </header>
+
+    </article>
     <footer id="footer_1">
         <p>Autor: Ronaldo Bueno</p>
     </footer>

@@ -23,7 +23,7 @@ function ShowBuyFish(nodeindex) {
     document.querySelector("#peixenome").textContent = `${title} - ${price}`
 
     document.querySelector("#compra_efetuada").style.display = "none";
-    
+
     document.getElementById('id01').style.display = 'block';
 
     LoadCookie("nome");
@@ -80,46 +80,46 @@ function ValidateInput(id) {
     switch (id) {
         case "cpf": {
 
-            if(!TestaCPF(value.replaceAll('-', '').replaceAll('.', ''))) {
+            if (!TestaCPF(value.replaceAll('-', '').replaceAll('.', ''))) {
                 validado = false;
             }
             break;
         }
         case "email": {
-            if(!ValidateEmail(value)) {
+            if (!ValidateEmail(value)) {
                 validado = false;
             }
             break;
         }
         case "cep": {
-            if(!ValidaCEP(value)) {
+            if (!ValidaCEP(value)) {
                 validado = false;
             }
             else {
                 fetch(`https://viacep.com.br/ws/${value}/json/`)
-                .catch(error => {
-                    console.log(error);
-                })
-                .then(res => {
-                    res.json().then(busca => {
-                        console.log(busca);
-                        
-                        const bairro = busca.bairro;
-                        const logadouro = busca.logradouro;
-                        const cidade =busca.localidade;
-                        const estado = busca.uf;
-
-                        WriteInput("logadouro", logadouro);
-                        WriteInput("bairro", bairro);
-                        WriteInput("cidade", cidade);
-                        WriteInput("UF", estado);
+                    .catch(error => {
+                        console.log(error);
                     })
-                });
+                    .then(res => {
+                        res.json().then(busca => {
+                            console.log(busca);
+
+                            const bairro = busca.bairro;
+                            const logadouro = busca.logradouro;
+                            const cidade = busca.localidade;
+                            const estado = busca.uf;
+
+                            WriteInput("logadouro", logadouro);
+                            WriteInput("bairro", bairro);
+                            WriteInput("cidade", cidade);
+                            WriteInput("UF", estado);
+                        })
+                    });
             }
             break;
         }
         case "telefone": {
-            if(!ValidateCellPhone(value)) {
+            if (!ValidateCellPhone(value)) {
                 validado = false;
             }
             break;
@@ -159,20 +159,20 @@ function TestaCPF(strCPF) {
     var Soma;
     var Resto;
     Soma = 0;
-  if (strCPF == "00000000000") return false;
+    if (strCPF == "00000000000") return false;
 
-  for (i=1; i<=9; i++) Soma = Soma + parseInt(strCPF.substring(i-1, i)) * (11 - i);
-  Resto = (Soma * 10) % 11;
-
-    if ((Resto == 10) || (Resto == 11))  Resto = 0;
-    if (Resto != parseInt(strCPF.substring(9, 10)) ) return false;
-
-  Soma = 0;
-    for (i = 1; i <= 10; i++) Soma = Soma + parseInt(strCPF.substring(i-1, i)) * (12 - i);
+    for (i = 1; i <= 9; i++) Soma = Soma + parseInt(strCPF.substring(i - 1, i)) * (11 - i);
     Resto = (Soma * 10) % 11;
 
-    if ((Resto == 10) || (Resto == 11))  Resto = 0;
-    if (Resto != parseInt(strCPF.substring(10, 11) ) ) return false;
+    if ((Resto == 10) || (Resto == 11)) Resto = 0;
+    if (Resto != parseInt(strCPF.substring(9, 10))) return false;
+
+    Soma = 0;
+    for (i = 1; i <= 10; i++) Soma = Soma + parseInt(strCPF.substring(i - 1, i)) * (12 - i);
+    Resto = (Soma * 10) % 11;
+
+    if ((Resto == 10) || (Resto == 11)) Resto = 0;
+    if (Resto != parseInt(strCPF.substring(10, 11))) return false;
     return true;
 }
 
@@ -185,4 +185,13 @@ function ValidaCEP(cep) {
 function ValidateCellPhone(numero) {
     const pattern = /^\(?[1-9]{2}\)? ?(?:[2-8]|9[1-9])[0-9]{3}\-?[0-9]{4}$/;
     return pattern.test(numero);
+}
+
+function ShowMenu() {
+    const menu = document.querySelector('.background_menu');
+
+    if (menu.classList.contains('hidden'))
+        menu.classList.remove('hidden');
+    else
+        menu.classList.add('hidden');
 }
