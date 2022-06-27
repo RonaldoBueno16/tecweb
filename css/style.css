@@ -52,12 +52,6 @@ body {
     text-align: center;
 }
 
-.products {
-    display: flex;
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
 #footer_1 {
     display: flex;
     justify-content: center;
@@ -69,12 +63,23 @@ body {
     font-family: 'Poppins';
 }
 
+.products {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
 .card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    max-width: 300px;
+    max-width: 25em;
     margin: auto;
     text-align: center;
     font-family: 'Poppins';
+}
+
+.imagefish {
+    height: 20em;
 }
 
 .price {
